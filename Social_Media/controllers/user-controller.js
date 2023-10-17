@@ -10,7 +10,7 @@ const userController = {
         }
     },
 
-    async getSingleUser(req, res) {
+    async oneUser(req, res) {
         try {
             const user = await User.findById(req.params.id);
             if (!user) {
@@ -54,13 +54,13 @@ const userController = {
                 res.status(404).json({ message: 'User not found!' });
                 return;
             }
-            res.json({ message: 'User and associated thoughts deleted!' });
+            res.json({ message: 'User and their thoughts deleted!' });
         } catch (err) {
             res.status(500).json(err);
         }
     },
 
-    async addFriend(req, res) {
+    async addAmigo(req, res) {
         try {
             const user = await User.findByIdAndUpdate(
                 req.params.userId,
@@ -77,7 +77,7 @@ const userController = {
         }
     },
 
-    async removeFriend(req, res) {
+    async removeAmigo(req, res) {
         try {
             const user = await User.findByIdAndUpdate(
                 req.params.userId,
